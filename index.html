@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weather APP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="api_script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Weather App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#"> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="city">
+                    <button class="btn btn-outline-success" type="submit" id="submitBtn">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <main>
+            <h1 class="my-4 text-center"> Weather of <span id="cityName"></span> City</h1>
+            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm">
+                        <div class="card-header py-3">
+                            <h4 class="my-0 fw-normal">Location Info</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">Country : <small class="text-muted fw-light"><span id="country"> India</span></small>
+                            </h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>Name : <span id="name">London</span></li>
+                                <li>Region : <span id="region">UK</span></li>
+                                <li>Latitude : <span id="lat">26</span></li>
+                                <li>Longitude : <span id="lon">54</span></li>
+                                <li>Local Time : <span id="localtime">11:23 </span></li>
+                            </ul>
+                            <!-- <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm">
+                        <div class="card-header py-3">
+                            <h4 class="my-0 fw-normal">Temperature Info</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title"><span id="temp_c">15</span><small class="text-muted fw-light"> in deg C</small>
+                            </h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>Feels Like :   <span id="feelslike_c">45</span> </li>
+                                <li>Humidity : <span id="humidity"> 100</span></li>
+                                <li>Visibility in KM : <span id="vis_km">10.4</span></li>
+                                <li>Wind Speed in kph : <span id="wind_kph">37</span></li>
+                                <li>Percipitation in mm : <span id="precip_mm">0.458 </span></li>
+                            </ul>
+                            <!-- <button type="button" class="w-100 btn btn-lg btn-primary">Get started</button> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                        <div class="card-header py-3 text-bg-primary border-primary">
+                            <h4 class="my-0 fw-normal">Sunrise/ Sunset Info</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">Sunrise : <small class="text-muted fw-light"> <span id="sunrise">07:03 AM</span>  <small>
+                            </h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>Sunset :   <span id="sunset">07:03 AM</span> </li>
+                                <li>Moonrise : <span id="moonrise"> 07:03 AM</span></li>
+                                <li> Moonset : <span id="moonset">07:03 AM</span></li>
+                                <li> Moon Phase <span id="moon_phase">37</span></li>
+                                <li> Moon Illumination : <span id="moon_illumination">1 </span></li>
+                            </ul>
+                            <!-- <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="display-6 text-center mb-4">Weather of Other Common Cities</h2>
+
+            <div class="table-responsive">
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th style="width: 34%;"></th>
+                            <th style="width: 22%;">Temp</th>
+                            <th style="width: 22%;">Feels_Like</th>
+                            <th style="width: 22%;">Min_temp</th>
+                            <th style="width: 22%;">Max_temp</th>
+                            <th style="width: 22%;">Sunrise</th>
+                            <th style="width: 22%;">Sunset</th>
+                            <th style="width: 22%;">Humidity</th>
+                            <th style="width: 22%;">Wind_speed</th>
+                            <th style="width: 22%;">Wind_Degrees</th>
+                            <th style="width: 22%;">Cloud_pct</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" class="text-start">New York</th>
+                            <td class="">1</td>
+                            <td class="">2</td>
+                            <td class="">3</td>
+                            <td class="">4</td>
+                            <td class="">5</td>
+                            <td class="">6</td>
+                            <td class="">7</td>
+                            <td class="">8</td>
+                            <td class="">9</td>
+                            <td class="">10</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start">London</th>
+                            <td class="">1</td>
+                            <td class="">2</td>
+                            <td class="">3</td>
+                            <td class="">4</td>
+                            <td class="">5</td>
+                            <td class="">6</td>
+                            <td class="">7</td>
+                            <td class="">8</td>
+                            <td class="">9</td>
+                            <td class="">10</td>
+                        </tr>
+                    </tbody>
+
+                    <tbody>
+                        <tr>
+                            <th scope="row" class="text-start">New Delhi</th>
+                            <td class="">1</td>
+                            <td class="">2</td>
+                            <td class="">3</td>
+                            <td class="">4</td>
+                            <td class="">5</td>
+                            <td class="">6</td>
+                            <td class="">7</td>
+                            <td class="">8</td>
+                            <td class="">9</td>
+                            <td class="">10</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start">Sydney</th>
+                            <td class="">1</td>
+                            <td class="">2</td>
+                            <td class="">3</td>
+                            <td class="">4</td>
+                            <td class="">5</td>
+                            <td class="">6</td>
+                            <td class="">7</td>
+                            <td class="">8</td>
+                            <td class="">9</td>
+                            <td class="">10</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start">Dubai</th>
+                            <td class="">1</td>
+                            <td class="">2</td>
+                            <td class="">3</td>
+                            <td class="">4</td>
+                            <td class="">5</td>
+                            <td class="">6</td>
+                            <td class="">7</td>
+                            <td class="">8</td>
+                            <td class="">9</td>
+                            <td class="">10</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start">Los Angeles</th>
+                            <td class="">1</td>
+                            <td class="">2</td>
+                            <td class="">3</td>
+                            <td class="">4</td>
+                            <td class="">5</td>
+                            <td class="">6</td>
+                            <td class="">7</td>
+                            <td class="">8</td>
+                            <td class="">9</td>
+                            <td class="">10</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
